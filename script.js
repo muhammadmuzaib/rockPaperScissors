@@ -70,6 +70,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 let round = 0;
+let gameOver = false;
 function game() {
         getPlayerChoice((playerSelection) => {
             if(round < 5) {
@@ -80,10 +81,12 @@ function game() {
                 player_Score.textContent = `Player Score: ${playerScore}`;
                 comp_Score.textContent = `Comp Score: ${compScore}`;
                 
+                } else if(round >= 5) {
+                    gameOver = true;
                 }
-                if (playerScore > compScore) {
+                if (playerScore > compScore && gameOver === true) {
                     outputElement.textContent = `Player Won The Game With ${playerScore} score`;
-                } else if(compScore > playerScore) {
+                } else if(compScore > playerScore && gameOver === true) {
                     outputElement.textContent = `Computer Won The Game With ${compScore} score`;
                 }  
         });
